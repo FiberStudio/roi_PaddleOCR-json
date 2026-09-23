@@ -1,0 +1,46 @@
+key,en_US
+区域识别（PaddleOCR-json）,Region OCR (PaddleOCR-json)
+启用区域识别,Enable region OCR
+只提取框选区域内的文本。关闭后与普通 PaddleOCR 插件一致（整图识别）。,Only extract text inside selected regions. When disabled, behaves like the normal PaddleOCR plugin (full-image OCR).
+识别模式,Recognition mode
+裁剪识别（推荐）,Crop & recognize (recommended)
+整图识别后过滤,Full-image OCR then filter
+裁剪识别：只把每个区域裁剪下来识别，速度快。整图过滤：整图识别一遍，再只保留区域内的文字块。,Crop mode: only the region is cropped and recognized (fast). Filter mode: OCR the whole image once, then keep only text blocks inside the regions.
+区域文件,Region file
+选择区域文件,Select region file
+保存框选区域的 JSON 文件（百分比坐标）。删除该文件，或勾选「重新框选区域」后，下次识别会重新弹出框选窗口。,JSON file that stores the selected regions (percentage coordinates). Delete this file or enable "Reselect regions" to pop up the selection window again.
+重新框选区域,Reselect regions
+勾选后，本次识别只弹出一次框选窗口，重新框选并覆盖已保存的区域（不会逐张弹窗）。引擎参数不变时不会再次弹窗；也可随时删除区域文件重新框选。,If enabled, the selection window pops up only once for this run to reselect and overwrite the saved regions (not per image). It will not pop again while engine parameters are unchanged; you can also delete the region file to reselect anytime.
+文块保留规则（整图过滤模式）,Text block keep rule (filter mode)
+完全在区域内,Fully inside region
+中心点在区域内,Center inside region
+整图过滤模式下，文字块满足何种条件才算“在区域内”。,In filter mode, what condition makes a text block count as "inside the region".
+区域内文本连接符,Text join separator
+区域内识别到多个文字块时的连接符。默认无。例如识别地址等多段文本时，可填一个空格。,Separator between multiple text blocks in one region. Empty by default. For multi-line fields such as addresses, you may use a space.
+导出模板,Export template
+用 {区域名} 引用区域识别文本。留空则按「区域名：文本」分行输出。示例：发票号码是《{发票号码}》，税额是《{增值税额}》。,Use {region-name} to reference the recognized text. Leave empty to output "name: text" lines. Example: invoice no is 《{发票号码}》, tax is 《{增值税额}》.
+导出格式,Export format
+不导出,No export
+TXT + CSV,TXT + CSV
+把每张图片的区域识别结果写入文件。CSV 为 UTF-8 BOM，Excel 可直接打开。,Write per-image region results to file. CSV is UTF-8 with BOM so Excel opens it correctly.
+导出目录,Export directory
+选择导出目录,Select export directory
+导出文件保存目录。默认在插件目录下的「导出结果」文件夹。,Directory for exported files. Defaults to the "导出结果" folder inside the plugin directory.
+引擎路径,Engine path
+选择 PaddleOCR-json.exe,Select PaddleOCR-json.exe
+PaddleOCR-json.exe 的路径。留空时自动在本插件目录或官方 Paddle 插件目录中查找。,Path to PaddleOCR-json.exe. Leave empty to auto-search in this plugin directory or the official Paddle plugin directory.
+启用MKL-DNN加速,Enable MKL-DNN acceleration
+使用MKL-DNN数学库提高神经网络的计算速度。能大幅加快OCR识别速度，但也会增加内存占用。,Use the MKL-DNN math library to speed up neural network computation. Greatly accelerates OCR but increases memory usage.
+线程数,Threads
+（未找到模型库，请先组装引擎文件）,(No model library found. Assemble the engine files first.)
+文字识别（区域识别）,Text recognition (Region OCR)
+语言/模型库,Language / model library
+纠正文本方向,Correct text direction
+启用方向分类，识别倾斜或倒置的文本。可能降低识别速度。,Enable direction classification to recognize tilted or upside-down text. May reduce speed.
+限制图像边长,Limit image side length
+（默认）,(default)
+无限制,Unlimited
+将边长大于该值的图片进行压缩，可以提高识别速度。可能降低识别精度。,Images with a side longer than this value are compressed to improve speed. May reduce accuracy.
+区域预设,Region preset
+（不使用预设，使用区域文件）,(No preset - use the region file)
+选择一个已保存的预设后，识别时直接使用该预设的区域，不再弹出框选窗口。新增或修改预设后，请重新打开本设置页（或重启 Umi-OCR）刷新列表。,After selecting a saved preset, recognition uses that preset's regions directly with no selection window. After adding or changing presets, reopen this settings page (or restart Umi-OCR) to refresh the list.
